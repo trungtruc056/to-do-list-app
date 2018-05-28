@@ -14,6 +14,12 @@ document.getElementById("item").addEventListener("keydown",function(e){
     }
 });
 
+function removeItem(){
+    var item = this.parentNode.parentNode;
+    var parent = item.parentNode;
+    parent.removeChild(item);
+}
+
 function addItemTodo(text){
     var list = document.getElementById('todo');
 
@@ -26,6 +32,9 @@ function addItemTodo(text){
     var remove = document.createElement('button');
     remove.classList.add('remove');
     remove.innerHTML = removeSVG;
+
+    //add click event for removing item
+    remove.addEventListener('click',removeItem);
 
     var complete = document.createElement('button');
     complete.classList.add('complete');
