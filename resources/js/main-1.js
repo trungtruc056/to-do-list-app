@@ -4,7 +4,10 @@ var completeSVG = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:x
 
 document.getElementById("add").addEventListener("click",function(){
     var value = document.getElementById("item").value;
-    if(value) addItemTodo(value);
+    if(value){
+        addItemTodo(value);
+        document.getElementById('item').value = '';
+    }
 });
 
 document.getElementById("item").addEventListener("keydown",function(e){
@@ -20,6 +23,18 @@ function removeItem(){
     parent.removeChild(item);
 }
 
+function completeItem(){
+    var item = this.parentNode.parentNode;
+    var parent = item.parentNode;
+    var id = parent.id;
+
+    // Check if the item should be added to the completed list or to re-added to the todo list
+    var target = (id === 'todo') ? document.getElementById('completed'):document.getElementById('todo');
+
+    parent.removeChild(item);
+    target.insertBefore(item, target.insertBefore[0]);
+}
+
 function addItemTodo(text){
     var list = document.getElementById('todo');
 
@@ -33,12 +48,15 @@ function addItemTodo(text){
     remove.classList.add('remove');
     remove.innerHTML = removeSVG;
 
-    //add click event for removing item
+    //add click event for removing the item
     remove.addEventListener('click',removeItem);
 
     var complete = document.createElement('button');
     complete.classList.add('complete');
     complete.innerHTML = completeSVG;
+
+    //add click event for completing the item
+    complete.addEventListener('click',completeItem);
 
     buttons.appendChild(remove);
     buttons.appendChild(complete);
