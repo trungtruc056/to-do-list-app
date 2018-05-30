@@ -73,7 +73,7 @@ function completeItem() {
     var item = this.parentNode.parentNode;
     var parent = item.parentNode;
     var id = parent.id;
-    var value = item.innerText;
+	var value = item.innerText;
 
     if (id === 'todo') {
         data.todo.splice(data.todo.indexOf(value), 1);
@@ -95,8 +95,8 @@ function addItemToDOM(text, completed){
     var list = (completed) ? document.getElementById('completed'):document.getElementById('todo');
 
     var item = document.createElement('li');
-    item.innerText = text;
-    
+	item.innerText = text;
+	    
     var buttons = document.createElement('div');
     buttons.classList.add('buttons');
 
@@ -119,11 +119,18 @@ function addItemToDOM(text, completed){
     item.appendChild(buttons);
     list.insertBefore(item, list.childNodes[0]);
 }
+
+function testFunction() {
+	var item = this.parentNode.parentNode;
+	console.log(item.innerText);
+}
+
 function editTask() {
 	var findLi = document.getElementsByTagName('li');
-   for(var i= 0 ; i<findLi.length;i++){
-       findLi[i].addEventListener('click',function(event){
-       		event.target.innerHTML='<input type="text" value="'+event.target.textContent+'"><div class="buttons"><button class="save">'+saveSVG+'</button></div>';
+	findLi[0].addEventListener('click',testFunction);
+   for (var i = 0 ; i < findLi.length; i++) {
+       findLi[i].addEventListener('click', function(e) {
+       		e.target.innerHTML = '<input type="text" value="' + e.target.textContent+'"><div class="buttons"><button class="save">'+saveSVG+'</button></div>';
        });
    }
 }
