@@ -8,6 +8,9 @@ body, input, button {
 body {
   background: #edf0f1;
   padding: 80px 0 0 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 .noFill{
@@ -32,8 +35,9 @@ header {
   top: 0;
   left: 0;
   z-index: 5;
-
-  background: #25b99a;
+  background: #0052D4;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #6FB1FC, #4364F7, #0052D4);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #6FB1FC, #4364F7, #0052D4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   box-shadow: 0px 2px 4px rgba(44, 62, 80, 0.15);
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -105,7 +109,7 @@ header button svg {
 }
 
 header button svg .fill {
-  fill: #25b99a;
+  fill: #0052D4;  /* fallback for old browsers */
 }
 
 .container{
@@ -126,14 +130,14 @@ ul.todo li{
   line-height: 22px;
   min-height: 50px;
   width: 100%;
-  height: 50px;
+  height: auto;
   float: left;
   background: #fff;
   border-radius: 5px;
   position: relative;
-  box-shadow: 0px 1px 2px rgba(44,62,80,0.10);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   margin: 0 0 10px 0;
-  padding: 14px 150px 14px 14px;
+  padding: 14px;
 }
 
 ul.todo li:last-of-type{
@@ -141,20 +145,23 @@ ul.todo li:last-of-type{
 }
 
 ul.todo li .buttons {
-  width: 150px;
-  height: 50px;
-  position: absolute;
-  top: 0;
-  right: 0;
+  width: 155px;
+  height: 35px;
+  margin: 0 auto;
+  border: 1px solid #edf0f1;
+  border-radius: 25px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  margin-top: 15px;
 }
 
 ul.todo li .buttons.button-save{
   width: 50px;
+  margin-top: 15px;
 }
 
 ul.todo li .buttons button{
   width: 50px;
-  height: 50px;
+  height: 35px;
   float: left;
   background: none;
   position: relative;
@@ -194,7 +201,8 @@ ul.todo li .buttons button svg {
 
 ul.todo li .buttons button.complete svg{
   border-radius: 11px;
-  border: 1.5px solid #25b99a;
+  border: 1.5px solid #0052D4;
+  
   -webkit-transition: background 0.2s ease;
   -moz-transition: background 0.2s ease;
   -ms-transition: background 0.2s ease;
@@ -203,12 +211,12 @@ ul.todo li .buttons button.complete svg{
 }
 
 ul.todo#completed li .buttons button.complete svg{
-  background: #25b99a;
+  background: #0052D4;
   border: 0;
 }
 
 ul.todo:not(#completed) li .buttons button.complete:hover svg{
-  background: rgba(37,185,154,0.75);
+  background: rgba(0,82,212,0.75);
 }
 
 ul.todo:not(#completed) li .buttons button.complete:hover svg .fill{
@@ -238,7 +246,7 @@ ul.todo li .buttons button.edit:hover svg .fillColor{
 }
 
 ul.todo li .buttons button.save:hover svg .fillColor{
-  fill:#25b99a;
+  fill:#0052D4;
 }
 
 ul.todo li .buttons button.remove:hover svg .fill{
@@ -246,7 +254,7 @@ ul.todo li .buttons button.remove:hover svg .fill{
 }
 
 ul.todo li .buttons button.complete svg .fill{
-  fill: #25b99a;
+  fill: #0052D4;
 }
 
 ul.todo#completed{
@@ -283,10 +291,6 @@ ul.todo#completed:after{
   color:#aaa;
 }
 
-ul.todo li{
-  cursor: pointer;
-}
-
 ul.todo li input{
   width: 100%;
   display: block;
@@ -297,4 +301,20 @@ ul.todo li input{
 }
 ul.todo li.itemSave{
   padding: 12px 50px 14px 14px;
+}
+
+.footer-setting{
+  text-align: right;
+  margin-right: 15px;
+}
+
+.footer-setting .setting-btn{
+  background:transparent;
+  outline: none;
+  border:none;
+  cursor: pointer;
+}
+
+.footer-setting .setting-btn:hover .fillColor{
+  fill:#0052D4;
 }

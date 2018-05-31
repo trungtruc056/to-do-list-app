@@ -179,3 +179,11 @@ function addItemToDOM(text, completed){
     item.appendChild(buttons);
     list.insertBefore(item, list.childNodes[0]);
 }
+
+//Setting background image for body
+document.getElementById('setting').addEventListener('click', function() {
+    var myArray = ['/resources/img/bg1.jpg','/resources/img/bg1.jpg','/resources/img/bg3.jpg','/resources/img/bg4.jpg','/resources/img/bg5.jpg'];
+    var rand = myArray[Math.floor(Math.random() * myArray.length)];
+    var urlImg = 'url('+rand+')';
+    document.body.style.backgroundImage = urlImg;
+});
