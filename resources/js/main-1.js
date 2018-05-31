@@ -53,16 +53,25 @@ function dataObjectUpdated() {
     localStorage.setItem('todoList', JSON.stringify(data));
 }
 
-function saveItem() {
-    var item = this.parentNode.parentNode;
+function saveItem(this_) {
+    var item = this_.parentNode.parentNode;
     var child = item.childNodes[0];
     var value = child.value;
     var index = data.todo.indexOf(value);
-    console.log(index);
+    var parent = item.parentNode;
+    var id = parent.id;
 
+    if (id === 'todo') {
+        data.todo.splice(index,1,value);
+        window.alert('Edit success!');
+        location.reload();
+    } else {
+        data.completed.splice(index,1,value);
+        window.alert('Edit success!');
+        location.reload();
+    }
 
-    // data.todo.push(value);
-	// dataObjectUpdated();
+    dataObjectUpdated();
 }
 
 function editItem() {
@@ -72,6 +81,7 @@ function editItem() {
     var input = document.createElement('INPUT');
     input.setAttribute('type','text');
     input.setAttribute('value',item.innerText);
+    input.id = 'editInput';
 
     item.innerText='';
     item.appendChild(input);
@@ -84,8 +94,16 @@ function editItem() {
     buttons.classList = 'save';
     buttons.innerHTML = saveSVG;
     divBtn.appendChild(buttons);
+ 
+    buttons.addEventListener('click',function(e){
+        saveItem(this);
+    });
 
-    buttons.addEventListener('click',saveItem);
+    document.getElementById('editInput').addEventListener('keydown', function (e) {
+        if (e.code === 'Enter' || e.code === 'NumpadEnter') {
+            saveItem(buttons);
+        }
+    });
 }
 
 function removeItem() {
