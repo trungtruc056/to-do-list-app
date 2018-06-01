@@ -182,7 +182,7 @@ function addItemToDOM(text, completed){
 
 //Setting background image for body
 document.getElementById('setting').addEventListener('click', function() {
-    var myArray = ['./resources/img/bg1.jpg','./resources/img/bg1.jpg','./resources/img/bg3.jpg','./resources/img/bg4.jpg','./resources/img/bg5.jpg'];
+    var myArray = ['./resources/img/bg1.jpg','./resources/img/bg2.jpg','./resources/img/bg3.jpg','./resources/img/bg4.jpg','./resources/img/bg5.jpg','./resources/img/bg6.jpg'];
     var rand = myArray[Math.floor(Math.random() * myArray.length)];
     var urlImg = 'url('+rand+')';
     document.body.style.backgroundImage = urlImg;
